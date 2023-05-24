@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e9cacb25-d28c-4d08-a7fc-cfff180f82b7",
+		"_postman_id": "617d4027-f5f6-4329-9909-746fb861d67b",
 		"name": "PetStore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21740692",
-		"_collection_link": "https://www.postman.com/solar-space-804539/workspace/batch129nt/collection/21740692-e9cacb25-d28c-4d08-a7fc-cfff180f82b7?action=share&creator=21740692&source=collection_link"
+		"_collection_link": "https://www.postman.com/solar-space-804539/workspace/batch129nt/collection/21740692-617d4027-f5f6-4329-9909-746fb861d67b?action=share&creator=21740692&source=collection_link"
 	},
 	"item": [
 		{
@@ -16,7 +16,13 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Pamuk\");\r",
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -59,6 +65,10 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Kedi\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -94,7 +104,18 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Aslan\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"sold\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -137,7 +158,14 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"23899099875\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
