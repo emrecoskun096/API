@@ -29,7 +29,7 @@ public class Get01 {
 //        ii) Set the expected data --> Bu adımı post ve put gibi data gönderilecek metholarda yapacağız.
 
 //        iii) Send the request and get the response --> request'i gönder ve response'ı al
-        Response response = given().get(url);
+        Response response = RestAssured.given().get(url);
         response.prettyPrint();
 
 //        iv) Do assertion --> Doğrulama yap

@@ -40,17 +40,17 @@ public class Get10 extends GoRestBaseUrl {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}");
+        Response response = RestAssured.given(spec).get("{first}");
         response.prettyPrint();
 
         //Do assertion
         response.then()
                 .statusCode(200)
-                .body("meta.pagination.limit", equalTo(10),
-                        "meta.pagination.links.current", equalTo("https://gorest.co.in/public/v1/users?page=1"),
-                        "data", hasSize(10),
-                        "data.status", hasItem("active"),
-                        "data.name", hasItems("Kirti Chaturvedi", "Laxman Desai", "Deependra Verma"));
+                .body("meta.pagination.limit", Matchers.equalTo(10),
+                        "meta.pagination.links.current", Matchers.equalTo("https://gorest.co.in/public/v1/users?page=1"),
+                        "data", Matchers.hasSize(10),
+                        "data.status", Matchers.hasItem("active"),
+                        "data.name", Matchers.hasItems("Kirti Chaturvedi", "Laxman Desai", "Deependra Verma"));
 
         //The female users are less than or equals to male users
         //Kadın ve erkek sayılarını karşılaştıralım:
@@ -66,7 +66,7 @@ public class Get10 extends GoRestBaseUrl {
         }
 
         System.out.println("kadinSayisi = " + kadinSayisi);
-        assertTrue(kadinSayisi <= genderList.size() - kadinSayisi);
+        Assert.assertTrue(kadinSayisi <= genderList.size() - kadinSayisi);
 
         //2. Yol Groovy:
 

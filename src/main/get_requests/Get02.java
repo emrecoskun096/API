@@ -32,7 +32,7 @@ public class Get02 {
         //Set the expected data --> İleride yapılacak
 
         //Send the request and het the response
-        Response response = given().get(url);
+        Response response = RestAssured.given().get(url);
         response.prettyPrint();
 
         //Do assertion
@@ -41,14 +41,14 @@ public class Get02 {
                 .statusLine("HTTP/1.1 404 Not Found");//Status Line should be "HTTP/1.1 404 Not Found"
 
         //Response body contains "Not Found"
-        assertTrue(response.asString().contains("Not Found"));
+        Assert.assertTrue(response.asString().contains("Not Found"));
 
         //Response body does not contain "TechProEd"
-        assertFalse(response.asString().contains("TechProEd"));
+        Assert.assertFalse(response.asString().contains("TechProEd"));
 
         //Server is "Cowboy"
         String server = response.header("Server");
-        assertEquals("Cowboy", server);
+        Assert.assertEquals("Cowboy", server);
 
     }
 

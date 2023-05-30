@@ -32,14 +32,14 @@ public class Get05 extends HerOkuAppBaseUrl {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}");
+        Response response = RestAssured.given(spec).get("{first}");
         response.prettyPrint();
 
         //Do assertion
-        response.then().statusCode(200).body("bookingid", hasSize(greaterThan(0)));
+        response.then().statusCode(200).body("bookingid", Matchers.hasSize(Matchers.greaterThan(0)));
 
         //yada
-        assertTrue(response.asString().contains("bookingid"));
+        Assert.assertTrue(response.asString().contains("bookingid"));
 
     }
 

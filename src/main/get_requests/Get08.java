@@ -47,23 +47,23 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}/{second}");
+        Response response = RestAssured.given(spec).get("{first}/{second}");
         response.prettyPrint();
 
         //Do assertion
         Map<String, Object> actualData = response.as(HashMap.class);//De-Serialization
         System.out.println("actualData = " + actualData);
 
-        assertEquals(200, response.statusCode());
-        assertEquals(expectedData.get("userId"), actualData.get("userId"));
-        assertEquals(expectedData.get("title"), actualData.get("title"));
-        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        Assert.assertEquals(expectedData.get("title"), actualData.get("title"));
+        Assert.assertEquals(expectedData.get("completed"), actualData.get("completed"));
 
         //            And header "Via" is "1.1 vegur"
-        assertEquals(expectedData.get("Via"), response.header("Via")); //Assertion işlemini sabir değerler ile yapmalıyız
+        Assert.assertEquals(expectedData.get("Via"), response.header("Via")); //Assertion işlemini sabir değerler ile yapmalıyız
 
         //            And header "Server" is "cloudflare"
-        assertEquals(expectedData.get("Server"), response.header("Server"));
+        Assert.assertEquals(expectedData.get("Server"), response.header("Server"));
 
     }
 }

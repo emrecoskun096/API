@@ -35,33 +35,33 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}");
+        Response response = RestAssured.given(spec).get("{first}");
         response.prettyPrint();
 
         //Do assertion
         //Status code is 200
-        assertEquals(200, response.statusCode());
+        Assert.assertEquals(200, response.statusCode());
 
         //Print all ids greater than 190 on the console
         JsonPath jsonPath = response.jsonPath();
         List<Object> list = jsonPath.getList("findAll{it.id>190}.id");//Groovy Language --> Java temelli programlama dili
         System.out.println("list = " + list);
         //Assert that there are 10 ids greater than 190
-        assertEquals(10, list.size());
+        Assert.assertEquals(10, list.size());
 
         //Print all userIds whose ids are less than 5 on the console
         List<Integer> userIdList = jsonPath.getList("findAll{it.id<5}.userId");
         System.out.println("userIdList = " + userIdList);
 
         //Assert that the number of userIds whose ids are less than 5 is 4
-        assertEquals(4, userIdList.size());
+        Assert.assertEquals(4, userIdList.size());
 
         //Print all titles whose ids are less than 5
         List<String> titleList = jsonPath.getList("findAll{it.id<5}.title");
         System.out.println("titleList = " + titleList);
 
         //Assert that "delectus aut autem" is one of the titles whose id is less than 5
-        assertTrue(titleList.contains("delectus aut autem"));
+        Assert.assertTrue(titleList.contains("delectus aut autem"));
 
     }
 }

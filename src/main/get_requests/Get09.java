@@ -53,24 +53,24 @@ public class Get09 extends HerOkuAppBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}/{second}");
+        Response response = RestAssured.given(spec).get("{first}/{second}");
         response.prettyPrint();
 
         //Do assertion
         Map<String, Object> actualData = response.as(HashMap.class);//De-Serialization
         System.out.println("actualData = " + actualData);
 
-        assertEquals(200, response.statusCode());
-        assertEquals(expectedData.get("firstname"), actualData.get("firstname"));
-        assertEquals(expectedData.get("lastname"), actualData.get("lastname"));
-        assertEquals(expectedData.get("totalprice"), actualData.get("totalprice"));
-        assertEquals(expectedData.get("depositpaid"), actualData.get("depositpaid"));
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.get("firstname"), actualData.get("firstname"));
+        Assert.assertEquals(expectedData.get("lastname"), actualData.get("lastname"));
+        Assert.assertEquals(expectedData.get("totalprice"), actualData.get("totalprice"));
+        Assert.assertEquals(expectedData.get("depositpaid"), actualData.get("depositpaid"));
 
         //Value olarak "Object" data tipi dönen değerleri Casting yaparak asıl data türüne çeviriyoruz ve methodlara bu yöntem ile ulaşabiliyoruz.
-        assertEquals(bookingdatesMap.get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
-        assertEquals(bookingdatesMap.get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));
+        Assert.assertEquals(bookingdatesMap.get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
+        Assert.assertEquals(bookingdatesMap.get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));
 
-        assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
+        Assert.assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
 
     }
 
@@ -88,24 +88,24 @@ public class Get09 extends HerOkuAppBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}/{second}");
+        Response response = RestAssured.given(spec).get("{first}/{second}");
         response.prettyPrint();
 
         //Do assertion
         Map<String, Object> actualData = response.as(HashMap.class);//De-Serialization
         System.out.println("actualData = " + actualData);
 
-        assertEquals(200, response.statusCode());
-        assertEquals(expectedData.get("firstname"), actualData.get("firstname"));
-        assertEquals(expectedData.get("lastname"), actualData.get("lastname"));
-        assertEquals(expectedData.get("totalprice"), actualData.get("totalprice"));
-        assertEquals(expectedData.get("depositpaid"), actualData.get("depositpaid"));
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.get("firstname"), actualData.get("firstname"));
+        Assert.assertEquals(expectedData.get("lastname"), actualData.get("lastname"));
+        Assert.assertEquals(expectedData.get("totalprice"), actualData.get("totalprice"));
+        Assert.assertEquals(expectedData.get("depositpaid"), actualData.get("depositpaid"));
 
         //Value olarak "Object" data tipi dönen değerleri Casting yaparak asıl data türüne çeviriyoruz ve methodlara bu yöntem ile ulaşabiliyoruz.
-        assertEquals(bookingdatesMap.get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
-        assertEquals(bookingdatesMap.get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));
+        Assert.assertEquals(bookingdatesMap.get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
+        Assert.assertEquals(bookingdatesMap.get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));
 
-        assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
+        Assert.assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
 
     }
 

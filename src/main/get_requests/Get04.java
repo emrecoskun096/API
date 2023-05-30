@@ -41,16 +41,16 @@ public class Get04 extends JsonPlaceHolderBaseUrl {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given(spec).accept(ContentType.JSON).get("{first}");
+        Response response = RestAssured.given(spec).accept(ContentType.JSON).get("{first}");
         response.prettyPrint();
 
         //Do assertion
         response.then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("id", hasSize(200))//There should be 200 todos => toplam 200 todos olması gerekir
-                .body("title", hasItem("quis eius est sint explicabo"))// "quis eius est sint explicabo" should be one of the todos title => todos başlıklarından en az birinin "quis eius est sint explicabo" olması gerekir
-                .body("userId", hasItems(2, 7, 9))// 2, 7, and 9 should be among the userIds => userId değerleri arasında 2, 7 ve 9 bulunmalıdır
+                .body("id", Matchers.hasSize(200))//There should be 200 todos => toplam 200 todos olması gerekir
+                .body("title", CoreMatchers.hasItem("quis eius est sint explicabo"))// "quis eius est sint explicabo" should be one of the todos title => todos başlıklarından en az birinin "quis eius est sint explicabo" olması gerekir
+                .body("userId", CoreMatchers.hasItems(2, 7, 9))// 2, 7, and 9 should be among the userIds => userId değerleri arasında 2, 7 ve 9 bulunmalıdır
         ;
 
         //hasSize() ==> Eleman sayısını assert eder

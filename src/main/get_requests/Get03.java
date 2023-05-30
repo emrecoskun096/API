@@ -34,7 +34,7 @@ public class Get03 {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given().get(url);
+        Response response = RestAssured.given().get(url);
         response.prettyPrint();
 
         //Do assertion
@@ -42,17 +42,17 @@ public class Get03 {
         response.then()
                 .statusCode(200)
                 .contentType("application/json")
-                .body("userId",equalTo(2))//"userId" is 2 --> Hard assertion
-                .body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit"))//"title" is "et itaque necessitatibus maxime molestiae qui quas velit"
-                .body("completed",equalTo(false));//"completed" is false
+                .body("userId", CoreMatchers.equalTo(2))//"userId" is 2 --> Hard assertion
+                .body("title", CoreMatchers.equalTo("et itaque necessitatibus maxime molestiae qui quas velit"))//"title" is "et itaque necessitatibus maxime molestiae qui quas velit"
+                .body("completed", CoreMatchers.equalTo(false));//"completed" is false
 
         //2. Yol:
         response.then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("userId",equalTo(2),//Sof assertion
-                        "title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit"),
-                        "completed",equalTo(false) );
+                .body("userId", CoreMatchers.equalTo(2),//Sof assertion
+                        "title", CoreMatchers.equalTo("et itaque necessitatibus maxime molestiae qui quas velit"),
+                        "completed", CoreMatchers.equalTo(false) );
 
     }
 

@@ -44,32 +44,32 @@ public class Get06 extends HerOkuAppBaseUrl {
         //Set the expected data
 
         //Send the request and get the response
-        Response response = given(spec).get("{first}/{second}");
+        Response response = RestAssured.given(spec).get("{first}/{second}");
         response.prettyPrint();
 
         //Do assertion
         //1. Yol
         response.then()
                 .statusCode(200)
-                .body("firstname", equalTo("Josh"),
-                        "lastname", equalTo("Allen"),
-                        "totalprice", equalTo(111),
-                        "depositpaid", equalTo(true),
-                        "bookingdates.checkin", equalTo("2018-01-01"),
-                        "bookingdates.checkout", equalTo("2019-01-01"),
-                        "additionalneeds", equalTo("super bowls"));
+                .body("firstname", CoreMatchers.equalTo("Josh"),
+                        "lastname", CoreMatchers.equalTo("Allen"),
+                        "totalprice", CoreMatchers.equalTo(111),
+                        "depositpaid", CoreMatchers.equalTo(true),
+                        "bookingdates.checkin", CoreMatchers.equalTo("2018-01-01"),
+                        "bookingdates.checkout", CoreMatchers.equalTo("2019-01-01"),
+                        "additionalneeds", CoreMatchers.equalTo("super bowls"));
 
         //2. Yol: Json Path
         JsonPath jsonPath = response.jsonPath();//jsonPath() methodu ile response'ı jsonPath objesine çevirdik.
 
         //jsonPath objesi ile dataya spesifik olarak ulaşabiliriz:
-        assertEquals("firstname uyuşmadı","Josh", jsonPath.getString("firstname"));
-        assertEquals("Allen", jsonPath.getString("lastname"));
-        assertEquals(111, jsonPath.getInt("totalprice"));
-        assertTrue(jsonPath.getBoolean("depositpaid"));
-        assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
-        assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
-        assertEquals("super bowls", jsonPath.getString("additionalneeds"));
+        Assert.assertEquals("firstname uyuşmadı","Josh", jsonPath.getString("firstname"));
+        Assert.assertEquals("Allen", jsonPath.getString("lastname"));
+        Assert.assertEquals(111, jsonPath.getInt("totalprice"));
+        Assert.assertTrue(jsonPath.getBoolean("depositpaid"));
+        Assert.assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
+        Assert.assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
+        Assert.assertEquals("super bowls", jsonPath.getString("additionalneeds"));
 
         //3. Yol: TestNG Soft Assertion
         //Soft Assertion adımları:
